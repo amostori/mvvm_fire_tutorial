@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "419399398074",
+    "project_id": "stores-d62e0",
+    "storage_bucket": "stores-d62e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419399398074:android:5240eebca5684313ee4883",
+        "android_client_info": {
+          "package_name": "com.example.mvvm_fire_tutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419399398074-gsjmhcefkasclgtna90rjho3gumnrt4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIgAhWUKDame9l0VjdW9fplFcCGi3sato"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419399398074-gsjmhcefkasclgtna90rjho3gumnrt4l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "419399398074-nsmkal1qofojblqq5gv35hckdjk19p3f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mvvmFireTutorial.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
