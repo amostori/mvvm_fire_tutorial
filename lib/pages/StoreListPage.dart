@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_fire_tutorial/view_models/store_list_vm.dart';
 
+import '../custom_widgets/item_count_widget.dart';
 import '../view_models/store_vm.dart';
 
 class StoreListPage extends StatelessWidget {
@@ -58,7 +59,27 @@ class StoreListPage extends StatelessWidget {
 
   Widget _buildListItem(StoreViewModel store,
           void Function(StoreViewModel) onStoreSelected) =>
-      const Text('ListTile');
+      ListTile(
+        title: Text(
+          store.storeName,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        subtitle: Text(store.storeAddress),
+        trailing: FutureBuilder<int?>(
+          future: store.itemsCountAsync,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ItemCountWidget(count: snapshot.data!);
+            } else {
+              return const SizedBox.shrink();
+            }
+          },
+        ),
+        onTap: () => onStoreSelected(store),
+      );
 
   void _navigateToStoreItems(BuildContext context, store) {}
 }
