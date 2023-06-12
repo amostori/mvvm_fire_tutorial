@@ -66,5 +66,12 @@ class AddStorePage extends StatelessWidget {
         ));
   }
 
-  void _saveStore(BuildContext context) {}
+  void _saveStore(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      final isSaved = await addStoreViewModel.saveStore();
+      if (isSaved) {
+        Navigator.pop(context);
+      }
+    }
+  }
 }
