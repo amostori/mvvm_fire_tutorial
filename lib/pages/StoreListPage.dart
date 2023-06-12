@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_fire_tutorial/view_models/store_list_vm.dart';
+import 'package:provider/provider.dart';
 
 import '../custom_widgets/item_count_widget.dart';
+import '../view_models/add_store_viewmodel.dart';
 import '../view_models/store_vm.dart';
+import 'add_store_page.dart';
 
 class StoreListPage extends StatelessWidget {
   StoreListPage({Key? key}) : super(key: key);
@@ -29,7 +32,17 @@ class StoreListPage extends StatelessWidget {
         body: _buildBody());
   }
 
-  void _navigateToAddStorePage(BuildContext context) {}
+  void _navigateToAddStorePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ChangeNotifierProvider(
+                create: (context) => AddStoreViewModel(),
+                child: AddStorePage(),
+              ),
+          fullscreenDialog: true),
+    );
+  }
 
   Widget _buildBody() => StreamBuilder<QuerySnapshot>(
       stream: _storeListViewModel.storesAsStream,
