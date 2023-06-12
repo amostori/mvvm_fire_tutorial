@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm_fire_tutorial/view_models/store_list_vm.dart';
 
+import '../view_models/store_vm.dart';
+
 class StoreListPage extends StatelessWidget {
   StoreListPage({Key? key}) : super(key: key);
   final StoreListViewModel _storeListViewModel = StoreListViewModel();
@@ -41,7 +43,22 @@ class StoreListPage extends StatelessWidget {
         }
       });
 
-  Widget _buildList(QuerySnapshot querySnapshot) {
-    return const Text('ListView.builder');
+  Widget _buildList(QuerySnapshot snapshot) {
+    final stores =
+        snapshot.docs.map((doc) => StoreViewModel.fromSnapshot(doc)).toList();
+    return ListView.builder(
+        itemCount: stores.length,
+        itemBuilder: (context, index) {
+          final store = stores[index];
+          return _buildListItem(store, (store) {
+            _navigateToStoreItems(context, store);
+          });
+        });
   }
+
+  Widget _buildListItem(StoreViewModel store,
+          void Function(StoreViewModel) onStoreSelected) =>
+      const Text('ListTile');
+
+  void _navigateToStoreItems(BuildContext context, store) {}
 }
